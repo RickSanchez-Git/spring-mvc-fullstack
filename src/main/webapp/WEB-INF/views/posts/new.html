@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New Post</title>
+</head>
+<body>
+
+<form th:method="POST" th:action="@{/posts}" th:object="${post}">
+    <div class="mainContainer">
+        <div class="labelContainer">
+            <label for="postText">Enter text: </label>
+            <input type="text" th:field="*{postText}" id="postText">
+        </div>
+        <div style="color:red" th:if="${#fields.hasErrors('postText')}" th:errors="*{postText}">Error message</div>
+        <input type="submit" value="Post" class="submit">
+    </div>
+</form>
+
+</body>
+</html>
+
+<style>
+    .mainContainer {
+        width: 400px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .labelContainer {
+        display: flex;
+        justify-content: space-between;
+    }
+    .submit {
+        margin-top: 10px;
+    }
+    label {
+        margin-block: auto;
+    }
+</style>

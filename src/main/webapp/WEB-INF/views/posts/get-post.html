@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${post.getId()}">PostId</title>
+</head>
+<body>
+<div th:text="${post.getTime()}">PostTime</div>
+
+<div th:text="${post.getPostText()}" class="post">PostText</div>
+
+<div class="linkContainer">
+    <form th:method="GET" th:action="@{/posts}">
+        <input type="submit" value="Back">
+    </form>
+    <form th:method="GET" th:action="@{/posts/{id}/edit(id=${post.getId()})}">
+        <input type="submit" value="Edit">
+    </form>
+    <form th:method="DELETE" th:action="@{/posts/{id}(id=${post.getId()})}">
+        <input type="submit" value="Delete">
+    </form>
+</div>
+</body>
+</html>
+
+<style>
+    .post {
+        margin-block: 25px;
+    }
+    .linkContainer {
+        width: 300px;
+        display: flex;
+        justify-content: space-between;
+    }
+</style>
